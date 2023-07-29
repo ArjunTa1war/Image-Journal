@@ -14,11 +14,13 @@ const secret = 'asdfe45we45w345wegw345werjktjwertkj';
 
 
 const salt = bcrypt.genSaltSync(10);
-app.use(cors({credentials:true,origin:'http://localhost:3000'}));
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
+
 mongoose.connect("mongodb+srv://arjunblog:DmmwENjcCNjfScaF@cluster0.aukojqh.mongodb.net/?retryWrites=true&w=majority")
+
 app.post('/register',async(req,res)=>{
     const {username,password} = req.body;
     try{
@@ -33,7 +35,7 @@ app.post('/register',async(req,res)=>{
     }
 })
 
-app.post('/login', async (req,res) => {
+app.post("/login", async (req,res) => {
     const {username,password} = req.body;
     const userDoc = await User.findOne({username});
     const passOk = bcrypt.compareSync(password, userDoc.password);
