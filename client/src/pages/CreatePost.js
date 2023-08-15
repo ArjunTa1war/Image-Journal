@@ -5,7 +5,6 @@ import {Navigate} from "react-router-dom";
 import Editor from "../Editor";
 
 export default function CreatePost() {
-  const port  = process.env.REACT_APP_PORT;
   const [title,setTitle] = useState('');
   const [summary,setSummary] = useState('');
   const [content,setContent] = useState('');
@@ -18,9 +17,10 @@ export default function CreatePost() {
     data.set('content', content);
     data.set('file', files[0]);
     ev.preventDefault();
-    const response = await fetch(`${port}/post`, {
+    const response = await fetch('http://localhost:4000/post', {
       method: 'POST',
       body: data,
+      credentials: 'include',
     });
     if (response.ok) {
       setRedirect(true);

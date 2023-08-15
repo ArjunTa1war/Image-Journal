@@ -5,12 +5,11 @@ import {UserContext} from "../UserContext";
 import {Link} from 'react-router-dom';
 
 export default function PostPage() {
-  const port  = process.env.REACT_APP_PORT;
   const [postInfo,setPostInfo] = useState(null);
   const {userInfo} = useContext(UserContext);
   const {id} = useParams();
   useEffect(() => {
-    fetch(`${port}/post/${id}`)
+    fetch(`http://localhost:4000/post/${id}`)
       .then(response => {
         response.json().then(postInfo => {
           setPostInfo(postInfo);
@@ -19,6 +18,14 @@ export default function PostPage() {
   }, []);
 
   if (!postInfo) return '';
+  
+
+  const deletepage = async()=>{
+    const response = await fetch(`http://localhost:4000/postdelete/${postInfo._id}`, {
+      method: 'DELETE',
+    });
+    const json = await response.json();
+  }
 
   return (
     <div className="post-page">
@@ -33,10 +40,17 @@ export default function PostPage() {
             </svg>
             Edit this post
           </Link>
+
+          <Link onClick={deletepage} className="edit-btn" to={`/`} style={{marginLeft:"20px"}}>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" d="M3 6h18M6.6 6.6l2.8 11.2M15.4 6.6l-2.8 11.2" />
+          </svg>
+            Delete This Post
+          </Link>
         </div>
       )}
       <div className="image">
-        <img src={`${port}/${postInfo.cover}`} alt=""/>
+        <img src={`http://localhost:4000/${postInfo.cover}`} alt=""/>
       </div>
       <div className="contents" dangerouslySetInnerHTML={{__html:postInfo.content}} />
     </div>

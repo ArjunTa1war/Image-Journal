@@ -2,7 +2,7 @@ import {formatISO9075} from "date-fns";
 import {Link} from "react-router-dom";
 
 export default function Post({_id,title,summary,cover,content,createdAt,author}) {
-  const port  = process.env.REACT_APP_PORT;
+  const port  = "http://localhost:4000";
   return (
     <div className="post">
       <div className="image">
