@@ -5,11 +5,12 @@ import {UserContext} from "../UserContext";
 import {Link} from 'react-router-dom';
 
 export default function PostPage() {
+  const port  = process.env.REACT_APP_PORT;
   const [postInfo,setPostInfo] = useState(null);
   const {userInfo} = useContext(UserContext);
   const {id} = useParams();
   useEffect(() => {
-    fetch(`http://localhost:4000/post/${id}`)
+    fetch(`${port}/post/${id}`)
       .then(response => {
         response.json().then(postInfo => {
           setPostInfo(postInfo);
@@ -35,7 +36,7 @@ export default function PostPage() {
         </div>
       )}
       <div className="image">
-        <img src={`http://localhost:4000/${postInfo.cover}`} alt=""/>
+        <img src={`${port}/${postInfo.cover}`} alt=""/>
       </div>
       <div className="contents" dangerouslySetInnerHTML={{__html:postInfo.content}} />
     </div>

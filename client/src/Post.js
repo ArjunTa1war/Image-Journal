@@ -2,11 +2,12 @@ import {formatISO9075} from "date-fns";
 import {Link} from "react-router-dom";
 
 export default function Post({_id,title,summary,cover,content,createdAt,author}) {
+  const port  = process.env.REACT_APP_PORT;
   return (
     <div className="post">
       <div className="image">
           <Link to = {`/post/${_id}`}>
-          <img className="imageround" src={'http://localhost:4000/'+cover} alt=""/>
+          <img className="imageround" src={`${port}/${cover}`} alt=""/>
           </Link>
       </div>
       <div className="texts">
