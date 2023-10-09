@@ -25,22 +25,29 @@ export default function Header() {
   const username = userInfo?.username;
 
   return (
-    <header>
-      <Link to="/" className="logo">MyBlog</Link>
-      <nav>
-        {username && (
-          <>
-            <Link className="navbar-element" to="/create">Create new post</Link>
-            <a className="navbar-element"onClick={logout}>Logout ({username})</a>
-          </>
-        )}
-        {!username && (
-          <>
-            <Link className="navbar-element" to="/login">Login</Link>
-            <Link className="navbar-element" to="/register">Register</Link>
-          </>
-        )}
-      </nav>
-    </header>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div className="container-fluid">
+                <Link className="navbar-brand" to="/">Image Journal</Link>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                   
+                </ul>
+                {username?
+                    <>
+                    <Link className="btn btn-secondary mx-1" to="/create">Create new post</Link>
+                    <a className="btn btn-secondary mx-1" onClick={logout}>Logout ({username})</a>
+                    </>
+                    :
+                    <>
+                    <Link className='btn btn-secondary mx-1' to='/login'>Login</Link>
+                    <Link className='btn btn-secondary mx-1' to='/register'>Register</Link>
+                    </>
+                    }
+                </div>
+            </div>
+            </nav>
   );
 }
