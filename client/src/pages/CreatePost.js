@@ -31,7 +31,7 @@ export default function CreatePost() {
     return <Navigate to={'/'} />
   }
   return (
-    <form onSubmit={createNewPost}>
+    <form onSubmit={createNewPost} className="container" style={{paddingTop:"7%",maxWidth:"75%"}}>
       <input type="title"
              placeholder={'Title'}
              value={title}

@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 
 export default function IndexPage() {
   const [posts,setPosts] = useState([]);
+
   useEffect(() => {
     fetch('http://localhost:4000/post').then(response => {
       response.json().then(posts => {
@@ -11,10 +12,10 @@ export default function IndexPage() {
     });
   }, []);
   return (
-    <div className="container">
+    <main className="container" style={{ maxWidth: "75%", paddingTop: "7%" }}>
       {posts.length > 0 && posts.map(post => (
-        <Post key = {post._id} {...post} />
+        <Post key={post._id} {...post} />
       ))}
-    </div>
+    </main>
   );
 }

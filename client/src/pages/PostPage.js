@@ -28,7 +28,7 @@ export default function PostPage() {
   }
 
   return (
-    <div className="post-page">
+    <div className="post-page container" style={{marginTop:"8%",maxWidth:"75%"}}>
       <h1>{postInfo.title}</h1>
       <time>{formatISO9075(new Date(postInfo.createdAt))}</time>
       <div className="author">by @{postInfo.author.username}</div>
@@ -49,7 +49,7 @@ export default function PostPage() {
           </Link>
         </div>
       )}
-      <div className="image">
+      <div className="image my-4">
         <img src={`http://localhost:4000/${postInfo.cover}`} alt=""/>
       </div>
       <div className="contents" dangerouslySetInnerHTML={{__html:postInfo.content}} />

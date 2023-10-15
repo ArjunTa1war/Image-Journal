@@ -29,7 +29,7 @@ export default function LoginPage() {
     return <Navigate to={'/'} />
   }
   return (
-    <form className="login" onSubmit={login}>
+    <form className="login" style={{paddingTop:"10%"}} onSubmit={login}>
       <h1>Login</h1>
       <input type="text"
              placeholder="username"

@@ -1,6 +1,13 @@
 *{
     box-sizing: border-box;
+}
 
+body{
+    background-image: -webkit-linear-gradient(65deg, #efbd9d 50%, white 50%);
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh; /* Adjust this as needed */
+    
 }
 span{
 color: rgb(0, 0, 0);
@@ -162,26 +169,24 @@ a svg{
 }
 
 .navbar-element{
-    color: white;
+    color: rgb(8, 0, 0);
 }
 
 .texts{
-    color: white;
+    color: rgb(0, 0, 0);
 }
 .info{
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 h2{
-    color: white;
+    color: rgb(0, 0, 0);
 }
 h1{
-    color: white;
+    color: rgb(9, 0, 0);
     font-size: 4rem;
     font-weight: bold;
 }
-
-
 
 .author{
     color: white;
@@ -189,8 +194,7 @@ h1{
 
 .contents {
     background-color: transparent;
-    color: white;
-    font-weight: bold;
+    color: rgb(0, 0, 0);
     font-size: 1.5rem;
   }
 
@@ -222,3 +226,40 @@ h1{
     height: 250px;
     width: 400px;
  }
+
+ /* Add this CSS to your stylesheet */
+.custom-button {
+    background-color: #fca26e;
+    padding: 10px 20px; /* Adjust the padding as needed to control button size */
+    border: none;
+    text-decoration: none;
+    color: #fff;
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+    min-width: 100px;
+    /* Center text vertically and horizontally in the button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .custom-button:hover {
+    background-color: #1363ed; /* Change the background color on hover */
+  }
+  
+
+  .animated-text {
+    text-align: center;
+    font-size: 24px;
+    opacity: 0;
+    animation: fade-in 2s ease-in-out forwards;
+  }
+  
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
