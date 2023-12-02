@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require('express');
 const cors = require('cors');
 const mongoose = require("mongoose");
@@ -18,7 +19,8 @@ app.use(cors({credentials:true,origin:["http://localhost:3000"]}));
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
-mongoose.connect("mongodb+srv://arjunblog:DmmwENjcCNjfScaF@cluster0.aukojqh.mongodb.net/?retryWrites=true&w=majority")
+const URI = process.env.MONGO_URI
+mongoose.connect(URI,{useNewUrlParser:true});
 app.post('/register',async(req,res)=>{
     const {username,password} = req.body;
     try{
